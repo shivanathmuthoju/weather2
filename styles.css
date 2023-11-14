@@ -1,0 +1,370 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+/* variables */
+
+:root {
+    --bg-color : rgba(53, 53, 53, 0.2);
+    --bg-glass : rgba(255, 255, 255, 0.2);
+    font-family: 'poppins', sans-serif;
+}
+
+*::after {
+    font-family: 'Poppins';
+}
+
+main {
+
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    padding: 2vh;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    color: #ffffff;
+
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left : 0;
+}
+
+#bgVideo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.glass {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    
+}
+
+.weather-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#input-container {
+    width: 100%;
+    text-align: center;
+
+}
+
+#location-input {
+    width: 50%;
+    padding: 10px 15px;
+    outline: none;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+input::placeholder {
+    color: #ffffff;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: .75em;
+}
+
+#location-button {
+    display: flex;
+    font-weight: 200;
+    letter-spacing: .15em;
+    font-size: .75em;
+    padding: 10px 15px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+#location-button i {
+    font-size: 1.5em;
+    font-weight: 200;
+    margin-right: 10px;
+    
+}
+
+#close-input {
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#close-input:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+#city {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+#location-button::after {
+    content: 'CHANGE LOCATION';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255,255,255,1);
+    color: black;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    font-weight: 400;
+    overflow: hidden;
+    width: 0;
+}
+
+#location-button:hover::after {
+    width: 100%;
+}
+
+#forecasts-container {
+    height: 25vh;
+    width: 80%;
+    /* padding: 20px; */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+#forecasts-container::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/*  */
+.forecasts_inner {
+    position: relative;
+}
+
+#down-arrow {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+#up-arrow {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+/*  */
+
+.temp {
+    position: relative;
+}
+
+.large-temp {
+    font-size: calc(10vh + 8vw);
+}
+
+.temp::after {
+    /* content: " \2103"; */
+    content: "°C";
+    position: absolute;
+    font-size: 0.125em;
+    font-weight: 600;
+    top : -10;
+    font-family: 'poppins', sans-serif;
+}
+
+.text-lg {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: calc(1.5vh + 1vw);
+    text-align: center;
+    margin-top: -40px;
+}
+
+.title {
+    font-weight: 400;
+    letter-spacing: 0.225em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+
+}
+
+.forecasts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.forecasts::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.forecasts_inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    scroll-snap-align: start;
+    
+}
+
+.forecast {
+    margin: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.forecast-head {
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    text-wrap: nowrap;
+
+}
+
+.sm-temp {
+    font-weight: 600;
+    font-size: calc(2vh + 2vw);
+    /* margin-top: 5px; */
+}
+
+.sm-temp::after {
+    font-size: calc(0.5vh + 0.75vw);
+    font-weight: 400;
+}
+
+
+/* loader */
+
+.loader-container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: grid;
+    background-color: #ffffff;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+  }
+  
+  .loader:before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: #add8e6;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    animation: shadow324 0.5s linear infinite;
+  }
+  
+  .loader:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #add8e6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    animation: jump7456 0.5s linear infinite;
+  }
+  
+  @keyframes jump7456 {
+    15% {
+      border-bottom-right-radius: 50%;
+    }
+  
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+  
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+  
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+  
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+  
+  @keyframes shadow324 {
+  
+    0%,
+      100% {
+      transform: scale(1, 1);
+    }
+  
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }

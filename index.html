@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <video id="bgVideo" src="./assets/sunny.mp4" autoplay muted loop></video>
+    </div>
+
+
+        <main>
+            
+            <div id="input-container">
+                <button class="glass" id="close-input"><i class='bx bx-x'></i></button>
+                <input type="text" name="location" id="location-input" class="glass" placeholder="Search location">
+            </div>
+            <button class="glass" id="location-button"><i class='bx bx-map'></i><span id="city"></span></button>
+            <div class="weather-main">
+                <h1 class="temp large-temp" id="main-temp">25</h1>
+                <p class="text-lg" id="condition"></p>
+            </div>
+            <div class="glass" id="forecasts-container">
+                <div class="forecasts_inner">
+                    <h4 class="title">
+                        Daily forecasts
+                    </h4>
+                    <i class='bx bx-down-arrow-alt' id="down-arrow"></i>
+                    <div class="forecasts" id="days">
+                        <!-- <div class="forecast">
+                            <p class="forecast-head">Time</p>
+                            <p class="temp sm-temp">25</p>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="forecasts_inner" >
+                    <h4 class="title">
+                        Hourly Forecasts
+                    </h4>
+                    <i class='bx bx-up-arrow-alt' id="up-arrow"></i>
+                    <div class="forecasts" id="hours">
+                        <!-- <div class="forecast">
+                            <p class="forecast-head">Time</p>
+                            <p class="temp sm-temp">25</p>
+                        </div> -->
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+        <div class="loader-container">
+
+            <div class="loader"></div>
+        </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
