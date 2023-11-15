@@ -213,7 +213,7 @@ async function updateDOM(location) {
         await showElement(locationButton);
         await updateHourly(todaysHourlyForecasts.hour);
         await updateDays(forecastWeather.forecast.forecastday);
-        hideSpinner();
+        // hideSpinner();
     }
 }
 
@@ -229,7 +229,11 @@ closeButton.addEventListener('click', () => {
     searchbar.value = "";
     hideElement(locationInput);
     showElement(locationButton);
-})
+});
+
+backgroundVideo.addEventListener('play', () => {
+    hideSpinner();
+});
 
 
 searchbar.addEventListener('keydown', (e) => {
